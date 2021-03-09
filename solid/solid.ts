@@ -13,6 +13,8 @@
 
 // https://wanago.io/2020/02/03/applying-solid-principles-to-your-typescript-code/
 
+// Code smells are a violation of fundamental design principles and negatively impact design quality.
+
 // S - Single responsibility
 
 
@@ -22,6 +24,7 @@
 // The component is only doing one function.  It could be modified to add more pannels
 // and will most likely be changed to populate the tabs from a different source in the future.
 // 
+
 import React, { useState } from 'react'
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
