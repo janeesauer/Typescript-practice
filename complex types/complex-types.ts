@@ -181,3 +181,34 @@ function nameAllTheFauna(fauna: allFauna) {
     console.log('The ' +  fauna.name + ' has ' + fauna.colour + ' flowers.')
 }
 nameAllTheFauna({name: 'Pear Tree', flowers: true,id: '1',colour: 'white',country: 'England',});
+
+
+// generic typing from the notes
+// If you were building a filter function (e.g. array.prototype.filter)... 
+// for example one which behaves like so:
+const outputOne = filter(['string', 'another string', 'string'], (item) => {
+  if (item[0] === 's') return true;
+  else return false;
+}); //output inferred as a string[] :)
+
+const outputTwo = filter([2, 1, 4, 5], (num) => {
+  if (num % 2 === 0) return true;
+  else return false;
+}); //output inferred as a number[] :)
+
+function filter(arr: string[], pred: (ele: string) => boolean): string[];
+function filter(arr: number[], pred: (ele: number) => boolean): number[];
+function filter(arr: boolean[], pred: (ele: boolean) => boolean): boolean[];
+
+function filter(
+  arr: (string | number | boolean)[],
+  predicate: (item: any) => boolean
+) {
+  const output = [];
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    const isAKeeper = predicate(element);
+    if (isAKeeper) output.push(element);
+  }
+  return output;
+}
